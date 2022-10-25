@@ -19,17 +19,15 @@ class MyApp extends StatelessWidget {
             ]
           )
         ),
-        body: Text('안녕'),
-        bottomNavigationBar: BottomAppBar(
-          child: SizedBox(
+        body: Align(
+          alignment: Alignment.bottomLeft,
+          child: Container(
+            width: double.infinity,
             height: 50,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                Icon(Icons.phone),
-                Icon(Icons.message),
-                Icon(Icons.contact_page),
-              ],
+            margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.red),
+              color: Colors.blue,
             ),
           ),
         )
