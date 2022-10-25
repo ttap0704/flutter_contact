@@ -13,23 +13,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Row(
-            children: const [
-              Text('플러터 앱임')
-            ]
-          )
+          leading: Icon(Icons.start),
+          title: Text('hihi'),
+          actions: const [
+            Icon(Icons.cloud),
+            Icon(Icons.start),
+          ],
         ),
-        body: Align(
-          alignment: Alignment.bottomLeft,
-          child: Container(
-            width: double.infinity,
-            height: 50,
-            margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.red),
-              color: Colors.blue,
+        body: SizedBox(
+          child: IconButton(
+            icon: Icon(Icons.star),
+            onPressed: (){},
+            style: ButtonStyle(
             ),
-          ),
+          )
         )
       )
     );
