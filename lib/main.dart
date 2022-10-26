@@ -1,7 +1,11 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    home: MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -18,43 +22,39 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-            appBar: AppBar(
-              title: Text('ㅗㅑㅗㅑ'),
-            ),
-            bottomNavigationBar: BottomNavBar(),
-            body: ListView.builder(
-              itemBuilder: (context, index) {
-                return ListTile(
-                  leading: Text(likes[index].toString()),
-                  title: Text(name[index]),
-                  trailing: TextButton(
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text('Contact'),
+                content: TextField(),
+                actions: [
+                  TextButton(
                       onPressed: () {
-                        setState(() {
-                          likes[index]++;
-                        });
+                        Navigator.pop(context);
                       },
-                      child: Text('좋아요')),
-                );
-              },
-              itemCount: 3,
-            )));
-  }
-}
-
-class BottomNavBar extends StatelessWidget {
-  const BottomNavBar({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomAppBar(
-      child: Container(
-        height: 50,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [Icon(Icons.call), Icon(Icons.note), Icon(Icons.file_copy)],
-        ),
+                      child: Text('Cancel')),
+                  TextButton(onPressed: () {}, child: Text('Ok')),
+                ],
+              );
+            },
+          );
+        },
+      ),
+      appBar: AppBar(
+        title: Text('ㅗㅑㅗㅑ'),
+      ),
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: Image.asset('woogi.jpeg'),
+            title: Text(name[index]),
+          );
+        },
+        itemCount: 3,
       ),
     );
   }
